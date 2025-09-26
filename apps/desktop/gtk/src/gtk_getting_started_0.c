@@ -2,8 +2,7 @@
 
 static void
 activate(GtkApplication *app,
-         gpointer user_data)
-{
+    gpointer user_data) {
     GtkWidget *window;
 
     window = gtk_application_window_new(app);
@@ -13,8 +12,7 @@ activate(GtkApplication *app,
 }
 
 int main(int argc,
-         char **argv)
-{
+    char **argv) {
     GtkApplication *app;
     int status;
 

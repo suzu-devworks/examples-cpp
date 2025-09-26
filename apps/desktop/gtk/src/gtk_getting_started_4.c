@@ -4,8 +4,7 @@
 static cairo_surface_t *surface = NULL;
 
 static void
-clear_surface(void)
-{
+clear_surface(void) {
     cairo_t *cr;
 
     cr = cairo_create(surface);
@@ -19,16 +18,15 @@ clear_surface(void)
 /* Create a new surface of the appropriate size to store our scribbles */
 static gboolean
 configure_event_cb(GtkWidget *widget,
-                   GdkEventConfigure *event,
-                   gpointer data)
-{
+    GdkEventConfigure *event,
+    gpointer data) {
     if (surface)
         cairo_surface_destroy(surface);
 
     surface = gdk_window_create_similar_surface(gtk_widget_get_window(widget),
-                                                CAIRO_CONTENT_COLOR,
-                                                gtk_widget_get_allocated_width(widget),
-                                                gtk_widget_get_allocated_height(widget));
+        CAIRO_CONTENT_COLOR,
+        gtk_widget_get_allocated_width(widget),
+        gtk_widget_get_allocated_height(widget));
 
     /* Initialize the surface to white */
     clear_surface();
@@ -43,9 +41,8 @@ configure_event_cb(GtkWidget *widget,
  */
 static gboolean
 draw_cb(GtkWidget *widget,
-        cairo_t *cr,
-        gpointer data)
-{
+    cairo_t *cr,
+    gpointer data) {
     cairo_set_source_surface(cr, surface, 0, 0);
     cairo_paint(cr);
 
@@ -55,9 +52,8 @@ draw_cb(GtkWidget *widget,
 /* Draw a rectangle on the surface at the given position */
 static void
 draw_brush(GtkWidget *widget,
-           gdouble x,
-           gdouble y)
-{
+    gdouble x,
+    gdouble y) {
     cairo_t *cr;
 
     /* Paint to the surface, where we store our state */
@@ -79,19 +75,16 @@ draw_brush(GtkWidget *widget,
  */
 static gboolean
 button_press_event_cb(GtkWidget *widget,
-                      GdkEventButton *event,
-                      gpointer data)
-{
+    GdkEventButton *event,
+    gpointer data) {
     /* paranoia check, in case we haven't gotten a configure event */
     if (surface == NULL)
         return FALSE;
 
-    if (event->button == GDK_BUTTON_PRIMARY)
-    {
+    if (event->button == GDK_BUTTON_PRIMARY) {
         draw_brush(widget, event->x, event->y);
     }
-    else if (event->button == GDK_BUTTON_SECONDARY)
-    {
+    else if (event->button == GDK_BUTTON_SECONDARY) {
         clear_surface();
         gtk_widget_queue_draw(widget);
     }
@@ -106,9 +99,8 @@ button_press_event_cb(GtkWidget *widget,
  */
 static gboolean
 motion_notify_event_cb(GtkWidget *widget,
-                       GdkEventMotion *event,
-                       gpointer data)
-{
+    GdkEventMotion *event,
+    gpointer data) {
     /* paranoia check, in case we haven't gotten a configure event */
     if (surface == NULL)
         return FALSE;
@@ -121,16 +113,14 @@ motion_notify_event_cb(GtkWidget *widget,
 }
 
 static void
-close_window(void)
-{
+close_window(void) {
     if (surface)
         cairo_surface_destroy(surface);
 }
 
 static void
 activate(GtkApplication *app,
-         gpointer user_data)
-{
+    gpointer user_data) {
     GtkWidget *window;
     GtkWidget *frame;
     GtkWidget *drawing_area;
@@ -154,15 +144,15 @@ activate(GtkApplication *app,
 
     /* Signals used to handle the backing surface */
     g_signal_connect(drawing_area, "draw",
-                     G_CALLBACK(draw_cb), NULL);
+        G_CALLBACK(draw_cb), NULL);
     g_signal_connect(drawing_area, "configure-event",
-                     G_CALLBACK(configure_event_cb), NULL);
+        G_CALLBACK(configure_event_cb), NULL);
 
     /* Event signals */
     g_signal_connect(drawing_area, "motion-notify-event",
-                     G_CALLBACK(motion_notify_event_cb), NULL);
+        G_CALLBACK(motion_notify_event_cb), NULL);
     g_signal_connect(drawing_area, "button-press-event",
-                     G_CALLBACK(button_press_event_cb), NULL);
+        G_CALLBACK(button_press_event_cb), NULL);
 
     /* Ask to receive events the drawing area doesn't normally
    * subscribe to. In particular, we need to ask for the
@@ -174,8 +164,7 @@ activate(GtkApplication *app,
 }
 
 int main(int argc,
-         char **argv)
-{
+    char **argv) {
     GtkApplication *app;
     int status;
 

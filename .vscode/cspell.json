@@ -8,11 +8,14 @@
     ".vscode",
     ".editorconfig",
     ".gitignore",
-    ".dockerignore",
+    ".dockerignore"
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
-  "words": [],
+  "words": [
+    "fcgi",
+    "gpointer"
+  ],
   "ignoreWords": [],
   "import": []
 }
