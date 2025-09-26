@@ -19,7 +19,8 @@ RUN set -x \
     && apt-get -y install git openssh-client less iproute2 procps \
     # Install C++ tools
     && apt -y install build-essential clang cmake cppcheck valgrind \
-    && apt -y install libgtk-3-dev \
+    && apt -y install libgtk-3-0 libgtk-3-dev \
+    && apt -y install libgtk-4-1 libgtk-4-dev \
     && apt -y install libfcgi-dev spawn-fcgi curl \
     ;
 

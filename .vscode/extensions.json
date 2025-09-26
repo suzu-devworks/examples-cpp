@@ -5,7 +5,7 @@
     "DavidAnson.vscode-markdownlint",
     "ms-vscode.cpptools",
     "ms-vscode.cpptools-extension-pack",
-    "vector-of-bool.cmake-tools",
-    "twxs.cmake"
+    "ms-vscode.cmake-tools",
+    "ms-vscode.makefile-tools"
   ]
 }
