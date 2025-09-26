@@ -12,11 +12,10 @@
   "editor.formatOnSave": true,
   "files.associations": {
     ".dockerignore": "ignore",
-    "appsettings*.json": "jsonc",
-    "web.config": "xml",
-    "string_view": "c"
   },
   "markdownlint.config": {},
-  "remote.autoForwardPortsFallback": 0,
-  "C_Cpp.default.compilerPath": "/usr/bin/clang",
+  "c-cpp-flylint.lizard.enable": false,
+  "c-cpp-flylint.flawfinder.enable": false,
+  "c-cpp-flylint.flexelint.enable": false,
+  "cmake.sourceDirectory": "/workspaces/examples-cpp/apps/algorithms/sorting"
 }
