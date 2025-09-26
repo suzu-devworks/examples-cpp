@@ -2,14 +2,12 @@
 
 static void
 print_hello(GtkWidget *widget,
-            gpointer data)
-{
+    gpointer data) {
     g_print("Hello World\n");
 }
 
 int main(int argc,
-         char *argv[])
-{
+    char *argv[]) {
     GtkBuilder *builder;
     GObject *window;
     GObject *button;
@@ -19,8 +17,7 @@ int main(int argc,
 
     /* Construct a GtkBuilder instance and load our UI description */
     builder = gtk_builder_new();
-    if (gtk_builder_add_from_file(builder, "desktop/gtk/ui/gtk_getting_started_3-window.ui", &error) == 0)
-    {
+    if (gtk_builder_add_from_file(builder, "desktop/gtk/ui/gtk_getting_started_3-window.ui", &error) == 0) {
         g_printerr("Error loading file: %s\n", error->message);
         g_clear_error(&error);
         return 1;

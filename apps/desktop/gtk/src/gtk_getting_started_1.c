@@ -2,15 +2,13 @@
 
 static void
 print_hello(GtkWidget *widget,
-            gpointer data)
-{
+    gpointer data) {
     g_print("Hello World\n");
 }
 
 static void
 activate(GtkApplication *app,
-         gpointer user_data)
-{
+    gpointer user_data) {
     GtkWidget *window;
     GtkWidget *button;
     GtkWidget *button_box;
@@ -31,8 +29,7 @@ activate(GtkApplication *app,
 }
 
 int main(int argc,
-         char **argv)
-{
+    char **argv) {
     GtkApplication *app;
     int status;
 

@@ -13,9 +13,11 @@
   "files.associations": {
     ".dockerignore": "ignore",
     "appsettings*.json": "jsonc",
-    "web.config": "xml"
+    "web.config": "xml",
+    "string_view": "c"
   },
   "markdownlint.config": {},
   "remote.autoForwardPortsFallback": 0,
   "terminal.integrated.shell.linux": "/bin/bash",
+  "C_Cpp.default.compilerPath": "/usr/bin/clang",
 }
