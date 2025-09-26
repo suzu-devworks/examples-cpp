@@ -1,5 +1,7 @@
 # examples-cpp
 
+[![CodeQL](https://github.com/suzu-devworks/examples-cpp/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/suzu-devworks/examples-cpp/actions/workflows/github-code-scanning/codeql)
+
 ## What is the purpose of this repository?
 
 This repository is a personal practice space for the author to learn and experiment with C/C++ programming.
