@@ -8,16 +8,18 @@
     },
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
+  "C_Cpp.clang_format_fallbackStyle": "LLVM",
+  "c-cpp-flylint.cppcheck.extraArgs": [
+    "--enable=all",
+    "--force"
+  ],
+  "c-cpp-flylint.flawfinder.enable": false,
+  "c-cpp-flylint.flexelint.enable": false,
+  "c-cpp-flylint.lizard.enable": false,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "files.associations": {
-    ".dockerignore": "ignore",
-    "appsettings*.json": "jsonc",
-    "web.config": "xml",
-    "string_view": "c"
+    ".dockerignore": "ignore"
   },
-  "markdownlint.config": {},
-  "remote.autoForwardPortsFallback": 0,
-  "terminal.integrated.shell.linux": "/bin/bash",
-  "C_Cpp.default.compilerPath": "/usr/bin/clang",
+  "markdownlint.config": {}
 }

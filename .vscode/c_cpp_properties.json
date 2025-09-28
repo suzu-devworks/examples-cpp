@@ -6,7 +6,6 @@
         "${workspaceFolder}/**",
         "/usr/local/include",
         "/usr/include",
-        "/usr/include/glib-2.0",
         "/usr/include/gtk-3.0",
         "/usr/include/pango-1.0",
         "/usr/include/glib-2.0",

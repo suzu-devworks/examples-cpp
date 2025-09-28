@@ -1,42 +1,36 @@
-FROM debian:12 as develop-stage
+FROM mcr.microsoft.com/devcontainers/cpp:debian-12 as develop-stage
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
-# This Dockerfile's base image has a non-root user with sudo access. Use the "remoteUser"
-# property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
-# will be updated to match your local UID/GID (when using the dockerFile property).
-# See https://aka.ms/vscode-remote/containers/non-root-user for details.
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
 # Configure apt and install packages
 RUN set -x \
-    && apt-get update \
-    && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
+    && apt update \
+    && apt -y install --no-install-recommends apt-utils dialog 2>&1 \
     # Verify git, process tools installed
-    && apt-get -y install git openssh-client less iproute2 procps \
+    && apt -y install git openssh-client less iproute2 procps \
+    && apt -y install python3 python3-venv \
     # Install C++ tools
-    && apt -y install build-essential clang cmake cppcheck valgrind \
-    && apt -y install libgtk-3-dev \
+    && apt -y install build-essential clang cppcheck valgrind \
+    && apt -y install libgtk-3-0 libgtk-3-dev \
+    && apt -y install libgtk-4-1 libgtk-4-dev \
     && apt -y install libfcgi-dev spawn-fcgi curl \
     ;
 
-# Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
+# PEP 668 compliant package install
 RUN set -x \
-    && groupadd --gid $USER_GID $USERNAME \
-    && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    # [Optional] Add sudo support for the non-root user
-    && apt-get install -y sudo \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
-    && chmod 0440 /etc/sudoers.d/$USERNAME \
+    && python3 -m venv /opt/python/venv \
+    && /opt/python/venv/bin/python -m pip install --no-cache-dir cmake cmakelang \
+    && /opt/python/venv/bin/python -m pip install --no-cache-dir meson ninja \
+    && ln -s /opt/python/venv/bin/cmake* /usr/local/bin/ \
+    && ln -s /opt/python/venv/bin/meson /usr/local/bin/ \
+    && ln -s /opt/python/venv/bin/ninja /usr/local/bin/ \
     ;
 
 # Clean up
 RUN set -x \
-    && apt-get autoremove -y \
-    && apt-get clean -y \
+    && apt autoremove -y \
+    && apt clean -y \
     && rm -rf /var/lib/apt/lists/* \
     ;
 
