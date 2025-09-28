@@ -12,8 +12,8 @@
 
 ```shell
 # set clang
-export CC=`which clang`
-export CXX=`which clang++`
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 
 mkdir .build && cd .build
 cmake ../
