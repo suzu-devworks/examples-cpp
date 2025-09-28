@@ -32,6 +32,8 @@
 *.app
 
 # cmake
+.build/
 build/
 builddir/
 dist/
+

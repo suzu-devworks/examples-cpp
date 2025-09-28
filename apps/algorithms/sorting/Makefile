@@ -1,5 +1,5 @@
 CC		= clang
-CFLAGS 	= -g -Wall -O0 -MMD -MP
+CFLAGS 	= -Werror -Wall -Wextra -Wpedantic -g -DDEBUG -std=c11
 
 SRCS	= $(wildcard *.c)
 OBJS	= $(notdir $(SRCS:.c=.o))
