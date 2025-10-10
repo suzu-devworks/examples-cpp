@@ -1,14 +1,14 @@
 CC		= clang
 CFLAGS 	= -Werror -Wall -Wextra -Wpedantic -g -DDEBUG -std=c11
 
-SRCS	= $(wildcard *.c)
-OBJS	= $(notdir $(SRCS:.c=.o))
-DEPS	= $(notdir $(OBJS:.o=.d))
-TARGETS	= $(notdir $(basename $(SRCS)))
+srcs	= $(wildcard *.c)
+objs	= $(notdir $(srcs:.c=.o))
+deps	= $(notdir $(objs:.o=.d))
+targets	= $(notdir $(basename $(srcs)))
 
 .PHONY: all
-all: $(TARGETS)
+all: $(targets)
 
 .PHONY: clean
 clean:
-	$(RM) $(OBJS) $(DEPS) $(TARGETS)
+	$(RM) $(objs) $(deps) $(targets)
