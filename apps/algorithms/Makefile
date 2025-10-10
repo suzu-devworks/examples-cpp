@@ -1,12 +1,12 @@
-SUBDIRS := \
-	sorting
+subdirs := \
+	sorting \
 
 .PHONY: all 
-all: $(SUBDIRS)
+all: $(subdirs)
 
 .PHONY: clean
-clean: $(SUBDIRS)
+clean: $(subdirs)
 
-.PHONY: $(SUBDIRS)
-$(SUBDIRS): 
+.PHONY: $(subdirs)
+$(subdirs): 
 	$(MAKE) $(MAKECMDGOALS) -C $@ 
