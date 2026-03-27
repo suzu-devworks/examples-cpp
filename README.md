@@ -1,5 +1,6 @@
 # examples-cpp
 
+![CMake](https://img.shields.io/badge/CMake-%23008FBA.svg?style=flat&logo=cmake&logoColor=white)
 [![CodeQL](https://github.com/suzu-devworks/examples-cpp/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/suzu-devworks/examples-cpp/actions/workflows/github-code-scanning/codeql)
 
 ## What is the purpose of this repository?
